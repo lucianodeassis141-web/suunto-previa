@@ -2,6 +2,19 @@
    Sem pagamento de verdade: o pedido sai como mensagem para o WhatsApp da loja. */
 (function () {
   var WHATS = '5537998057484';
+  /* Peças com modelo 3D para ver no espaço (piloto). Caminho relativo à pasta comum. */
+  var MODELOS = { 'cadeira-sollos': '3d/cadeira-sollos.glb' };
+  var BASE = (document.currentScript && document.currentScript.src) ? document.currentScript.src.replace(/loja\.js.*$/, '') : '../comum/';
+  var mvPronto = null;
+  function carregarMV() {
+    if (!mvPronto) mvPronto = new Promise(function (ok, erro) {
+      var s = document.createElement('script'); s.type = 'module';
+      s.src = 'https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js';
+      s.onload = function () { customElements.whenDefined('model-viewer').then(ok); }; s.onerror = erro;
+      document.head.appendChild(s);
+    });
+    return mvPronto;
+  }
   var CHAVE = 'suunto-previa-carrinho';
   var lista = window.SUUNTO_CATALOGO || [];
   var porId = {};
@@ -40,6 +53,7 @@
       '<p class="lj-cat">' + esc(p.cat) + '</p>' +
       '<h2 class="lj-nome">' + esc(p.nome) + '</h2>' +
       '<p class="lj-preco">' + precoTexto(p) + '</p>' +
+      (MODELOS[p.id] ? '<button type="button" class="lj-ar">Ver no seu espaço <span>em tamanho real, pela câmera do celular</span></button>' : '') +
       '<p class="lj-txt">Feito sob encomenda para você. Escolha as cores e os acabamentos que mais combinam com o seu espaço e nós ajustamos a peça com o fabricante.</p>' +
       '<ul class="lj-fatos"><li>Sob encomenda</li><li>3 anos de garantia</li><li>Bloco 3D para o seu arquiteto</li></ul>' +
       '<div class="lj-qtd" role="group" aria-label="Quantidade"><button type="button" data-q="-1" aria-label="Menos uma">−</button><output>1</output><button type="button" data-q="1" aria-label="Mais uma">+</button></div>' +
@@ -59,6 +73,23 @@
       b.onclick = function () { q = Math.max(1, q + Number(b.dataset.q)); out.textContent = q; };
     });
     ficha.querySelector('.lj-add').onclick = function () { adicionar(p.id, q); ficha.close(); abrirCarrinho(); };
+    var arBtn = ficha.querySelector('.lj-ar');
+    if (arBtn) arBtn.onclick = function () {
+      var caixa = ficha.querySelector('.lj-foto');
+      arBtn.disabled = true; arBtn.firstChild.textContent = 'Carregando a peça em 3D ';
+      carregarMV().then(function () {
+        caixa.innerHTML = '<model-viewer class="lj-3d" src="' + BASE + MODELOS[p.id] + '" alt="' + esc(p.nome) + ' em 3D" camera-controls touch-action="pan-y" auto-rotate rotation-per-second="18deg" shadow-intensity="1" exposure="1.05" ar ar-modes="webxr scene-viewer quick-look" ar-scale="fixed" ar-placement="floor">' +
+          '<button slot="ar-button" class="lj-btn lj-ar-cam">Abrir a câmera e ver no meu espaço</button></model-viewer>' +
+          '<p class="lj-ar-nota">Arraste para girar a peça.</p>';
+        var mv = caixa.querySelector('model-viewer'), nota = caixa.querySelector('.lj-ar-nota');
+        mv.addEventListener('load', function () {
+          nota.textContent = mv.canActivateAR ? 'Arraste para girar. No botão, a câmera abre e a peça aparece no chão, em tamanho real.' : 'Arraste para girar a peça. Abra esta página no celular para ver a peça no seu espaço, pela câmera.';
+        });
+        mv.addEventListener('ar-status', function (e) { if (e.detail.status === 'failed') nota.textContent = 'Este celular não abriu a câmera em 3D. A peça continua aqui para girar.'; });
+        var g = ficha.querySelector('.lj-miniaturas'); if (g) g.style.display = 'none';
+        arBtn.style.display = 'none';
+      }).catch(function () { arBtn.disabled = false; arBtn.firstChild.textContent = 'Não carregou. Tentar de novo '; });
+    };
     ficha.showModal();
   }
   ficha.addEventListener('click', function (e) { if (e.target === ficha) ficha.close(); });
