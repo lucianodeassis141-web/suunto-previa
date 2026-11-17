@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Suunto Móveis · Prévias</title>
+<meta name="description" content="Três prévias do novo site da Suunto Móveis.">
+<link rel="icon" href="comum/simbolo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--ink:#272727;--muted:#575C57;--accent:#425143;--m:clamp(16px,3vw,48px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Poppins',system-ui,sans-serif;font-size:16px;line-height:1.55}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+header{padding:24px var(--m)}
+header img{height:26px;width:auto}
+.abre{padding:64px var(--m) 48px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;align-items:end}
+h1{grid-column:1/8;margin:0;font-size:clamp(40px,6vw,88px);line-height:1;letter-spacing:-.04em;font-weight:600}
+.abre p{grid-column:9/13;margin:0;font-size:16px}
+.versoes{padding:0 var(--m) 120px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.versao{text-decoration:none;display:grid;gap:14px}
+.versao .f{overflow:hidden;background:#F3F3F3}
+.versao img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.versao:hover img,.versao:focus-visible img{transform:scale(1.03)}
+.versao h2{margin:0;font-size:30px;letter-spacing:-.03em;font-weight:600}
+.versao p{margin:0}
+.versao span{color:var(--accent);font-weight:500;text-decoration:underline;text-underline-offset:5px}
+footer{background:var(--accent);color:#fff;padding:56px var(--m);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+footer p{grid-column:1/8;margin:0;font-size:16px}
+footer p+p{grid-column:9/13}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@media (max-width:900px){.abre{display:block}.abre p{margin-top:16px}.versoes{grid-template-columns:1fr;gap:48px}footer{display:block}footer p+p{margin-top:16px}}
+</style>
+</head>
+<body>
+<header><img src="comum/logo.svg" alt="Suunto Móveis" width="130" height="26"></header>
+<main>
+  <div class="abre">
+    <h1>Três caminhos para o novo site</h1>
+    <p>Mesma marca, mesmas fotos e o mesmo catálogo nas três. Muda a forma de mostrar a coleção. Todas têm carrinho e fecham o pedido pelo WhatsApp.</p>
+  </div>
+  <div class="versoes">
+    <a class="versao" href="catalogo/"><div class="f"><img src="capas/catalogo.jpg" alt="Prévia da versão Catálogo" width="1200" height="750"></div><h2>Catálogo</h2><p>Cada peça num quadro de cor, como num catálogo impresso. Na abertura você escolhe a peça pelo nome e vê o preço.</p><span>Abrir a versão</span></a>
+    <a class="versao" href="colecao/"><div class="f"><img src="capas/colecao.jpg" alt="Prévia da versão Coleção" width="1200" height="750"></div><h2>Coleção</h2><p>Fundo escuro e a coleção inteira à mostra logo na abertura. Os nomes acendem a foto da peça ao passar o mouse.</p><span>Abrir a versão</span></a>
+    <a class="versao" href="ambientes/"><div class="f"><img src="capas/ambientes.jpg" alt="Prévia da versão Ambientes" width="1200" height="750"></div><h2>Ambientes</h2><p>O nome fica parado e as fotos dos ambientes passam por dentro dele. Foco nos lugares onde os móveis vivem.</p><span>Abrir a versão</span></a>
+  </div>
+</main>
+<footer>
+  <p>Prévia de layout da Suunto Móveis. Produtos e fotos do site atual. Preços do sistema da loja onde o nome bate; os demais aparecem como sob consulta.</p>
+  <p>Pagamento online entra na versão final.</p>
+</footer>
+</body>
+</html>

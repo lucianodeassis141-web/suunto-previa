@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Suunto Móveis · Ambientes</title>
+<meta name="description" content="Prévia do site da Suunto Móveis: móveis de área externa de alto padrão, mostrados nos ambientes onde vivem.">
+<link rel="icon" href="../comum/simbolo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../comum/loja.css">
+<style>
+:root{
+  --bg:#F3F3F1; --ink:#272727; --muted:#575C57; --accent:#425143; --accent-ink:#fff; --surface:#E6E8E3;
+  --sage:#B9C6AE; --sage2:#DCE2D6; --deep:#2E392F;
+  --font:'Poppins',system-ui,sans-serif; --radius:0px; --m:clamp(16px,2.4vw,32px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:clip;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+/* topo */
+.topo{position:fixed;inset:0 0 auto;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:14px var(--m);background:var(--bg)}
+.topo .marca img{height:24px;width:auto}
+.topo nav{display:flex;gap:24px;align-items:center;font-size:16px}
+.topo nav a{text-decoration:none}.topo nav a:hover{text-decoration:underline;text-underline-offset:5px}
+.btn-c{font:inherit;font-size:16px;background:var(--accent);color:#fff;border:0;padding:9px 16px;cursor:pointer;display:inline-flex;gap:10px;align-items:center;transition:filter .2s}
+.btn-c:hover{filter:brightness(1.15)}
+.btn-c [data-carrinho-n]{background:#fff;color:var(--accent);min-width:22px;height:22px;display:inline-grid;place-items:center;font-size:14px;font-weight:600}
+/* abertura: frase dividida por um quadro */
+.abre{height:250svh;position:relative}
+.palco{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-columns:1fr 42vw 1fr;align-items:center}
+.palco h1{grid-column:1/-1;grid-row:1;display:grid;grid-template-columns:1fr 42vw 1fr;align-items:center;margin:0;position:relative;z-index:3}
+.palco h1 span{font-size:clamp(44px,5.4vw,92px);font-weight:600;letter-spacing:-.04em;line-height:1;position:relative;z-index:2}
+.palco h1 span:first-child{grid-column:1;padding-left:var(--m);padding-right:16px}
+.palco h1 span:last-child{grid-column:3;padding-left:16px;text-align:right;padding-right:var(--m)}
+.rolo{grid-column:2;grid-row:1;height:100svh;position:relative}
+.rolo-trilho{position:absolute;left:0;right:0;top:50%;display:grid;gap:24px;will-change:transform}
+.rolo-trilho figure{margin:0;aspect-ratio:16/10;overflow:hidden}
+.rolo-trilho img{width:100%;height:100%;object-fit:cover}
+.abre-pe{position:absolute;left:var(--m);bottom:32px;max-width:28vw;display:grid;gap:16px;z-index:2}
+.abre-pe p{margin:0;font-size:16px}
+.abre-pe .leg{position:absolute;right:calc(-36vw - 28vw);bottom:0}
+.btn{display:inline-block;justify-self:start;font:inherit;font-size:16px;font-weight:500;background:var(--accent);color:#fff;border:0;padding:15px 26px;cursor:pointer;text-decoration:none;transition:filter .2s,transform .15s}
+.btn:hover{filter:brightness(1.15)}.btn:active{transform:scale(.98)}
+.leg-quadro{position:absolute;right:var(--m);bottom:32px;font-size:16px;z-index:2;text-align:right;max-width:24vw}
+/* famílias: cartões cruzando uma foto parada */
+.fam{position:relative}
+.fam-palco{position:relative}
+.fam-foto{position:relative;height:78svh;overflow:hidden}
+.fam-foto img{width:100%;height:118%;object-fit:cover;will-change:transform}
+.fam-palco h2{margin:0;padding:72px var(--m) 32px;font-size:clamp(36px,4.4vw,72px);letter-spacing:-.04em;line-height:1;font-weight:600}
+.fam-trilho{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-inline:var(--m)}
+.cartao{display:grid;grid-template-rows:auto auto;color:var(--ink);text-decoration:none;cursor:pointer;background:none;border:0;padding:0;font:inherit;text-align:left}
+.cartao .f{aspect-ratio:16/10;background:#F3F3F3;overflow:hidden;position:relative}
+.cartao .f img{position:absolute;inset:6%;width:88%;height:88%;object-fit:contain;mix-blend-mode:multiply;filter:brightness(1.07);transition:transform .5s}
+.cartao:hover .f img{transform:scale(1.04)}
+.cartao .p{padding:22px 24px;display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.cartao:nth-child(4n+1) .p{background:var(--sage2)}.cartao:nth-child(4n+2) .p{background:var(--sage)}.cartao:nth-child(4n+3) .p{background:#E9E4DA}.cartao:nth-child(4n+4) .p{background:#CFD6C9}
+.cartao b{font-size:30px;font-weight:600;letter-spacing:-.02em}
+.cartao span{font-size:16px}
+/* coleção */
+section{padding-block:clamp(110px,12vw,190px)}
+.sec-t{margin:0;font-size:clamp(36px,4.4vw,72px);line-height:1;letter-spacing:-.04em;font-weight:600}
+.colecao{padding-inline:var(--m)}
+.col-topo{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:end;margin-bottom:40px}
+.col-topo p{margin:12px 0 0;max-width:44ch}
+.abas{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.abas button{font:inherit;font-size:14px;border:0;background:var(--surface);color:var(--ink);padding:9px 14px;cursor:pointer;transition:background .2s}
+.abas button:hover{background:var(--sage2)}
+.abas button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.grade{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 16px}
+.item{text-decoration:none;display:grid;gap:12px}
+.item .f{aspect-ratio:1;background:#fff;position:relative;overflow:hidden}
+.item .f img{position:absolute;inset:8%;width:84%;height:84%;object-fit:contain;mix-blend-mode:multiply;filter:brightness(1.07);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.item .f img.amb{inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:normal;filter:none;opacity:0;transition:opacity .4s}
+.item:hover .f img.amb{opacity:1}
+.item p{margin:0;display:flex;justify-content:space-between;gap:12px;font-size:16px}
+.item p span:last-child{color:var(--muted);white-space:nowrap}
+.mais{margin-top:48px;font:inherit;font-size:16px;background:none;border:0;border-bottom:2px solid var(--ink);padding:0 0 4px;cursor:pointer}
+/* materiais: título preso, linhas passam */
+.mat{background:var(--deep);color:#fff;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;padding-inline:var(--m)}
+.mat h2{grid-column:1/6;position:sticky;top:96px;align-self:start;margin:0;font-size:clamp(36px,4.4vw,72px);line-height:1;letter-spacing:-.04em;font-weight:600}
+.mat-linhas{grid-column:7/13;display:grid;gap:120px}
+.mat-bloco h3{transition:transform .6s;margin:0 0 20px;font-size:30px;font-weight:600;letter-spacing:-.02em}
+.mat-bloco .r{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:start}
+.mat-bloco img{width:200px;aspect-ratio:3/4;object-fit:cover}
+.mat-bloco ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:16px;color:#E3E8DF}
+/* projetos: cortina */
+.cortina{padding:0}
+.cortina-intro{padding:clamp(110px,12vw,190px) var(--m) 0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.cortina-intro h2{grid-column:1/7}
+.cortina-intro p{grid-column:8/12;margin:0;align-self:end}
+.lamina{position:sticky;top:0;height:100svh;overflow:hidden;margin:0;background:var(--bg);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;padding:88px var(--m) 32px;box-sizing:border-box}
+.lamina img{grid-column:6/13;width:100%;height:100%;object-fit:cover}
+.lamina figcaption{grid-column:1/5;grid-row:1;align-self:end;font-size:20px;line-height:1.45}
+.lamina figcaption b{display:block;font-size:clamp(36px,4.4vw,72px);font-weight:600;letter-spacing:-.04em;line-height:1;margin-bottom:20px}
+.cortina-trilho{margin-top:64px}
+/* arquitetas */
+.arq{padding-inline:var(--m);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;row-gap:64px}
+.arq h2{grid-column:1/13}
+.arq .pess{display:grid;gap:12px}
+.arq .pess img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.arq .pess:nth-of-type(1){grid-column:1/5}.arq .pess:nth-of-type(2){grid-column:5/9;margin-top:120px}.arq .pess:nth-of-type(3){grid-column:9/13;margin-top:40px}
+.arq .pess p{margin:0}.arq .pess p b{font-weight:500;font-size:20px;display:block}
+/* faixa de nomes */
+.nomes{padding:0}
+.faixa{background:var(--accent);color:#fff;height:34vh;display:flex;align-items:center;overflow:hidden}
+.faixa-t{display:flex;white-space:nowrap;animation:corre 50s linear infinite}
+.faixa-t span{font-size:8vw;font-weight:600;letter-spacing:-.04em;padding-right:4vw;display:inline-flex;align-items:center;gap:4vw}
+.faixa-t span::after{content:"";width:2vw;height:2vw;border-radius:50%;background:var(--sage);display:inline-block}
+@keyframes corre{to{transform:translateX(-50%)}}
+.nomes>div:last-child{padding:24px var(--m) 0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.nomes h2{grid-column:1/6;margin:0;font-size:20px;font-weight:600}
+.nomes p{grid-column:7/13;margin:0;font-size:16px}
+/* uma palavra é o botão */
+.cta{padding:0;margin-top:clamp(110px,12vw,190px)}
+.cta a{display:block;background:var(--accent);color:#fff;height:60svh;position:relative;text-decoration:none;overflow:hidden;transition:background .2s,color .2s}
+.cta a:hover,.cta a:focus-visible{background:var(--sage);color:var(--ink)}
+.cta .q{position:absolute;left:var(--m);top:28px;font-size:20px;max-width:30ch;margin:0}
+.cta .s{position:absolute;right:var(--m);top:22px;font-size:30px;line-height:1}
+.cta h2{position:absolute;left:var(--m);right:var(--m);bottom:24px;margin:0;font-size:clamp(64px,17vw,280px);line-height:.8;letter-spacing:-.06em;font-weight:700}
+/* rodapé */
+.rodape{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;padding:30vh var(--m) 30px;font-size:16px;align-items:end}
+.rodape nav{display:flex;gap:24px}
+.rodape a{text-decoration:none}.rodape a:hover{text-decoration:underline}
+.rodape p{margin:0}.rodape p:last-child{text-align:right}
+/* entrada */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (max-width:900px){
+  .topo nav a{display:none}
+  .abre{height:auto}
+  .palco{position:relative;height:auto;display:block;padding:84px var(--m) 32px}
+  .palco h1{display:block;margin:0}
+  .palco h1 span{display:block;font-size:10vw;padding:0!important}
+  .palco h1 span:last-child{text-align:right}
+  .rolo{height:auto;margin:20px 0}
+  .rolo-trilho{position:static;transform:none!important;display:block}
+  .rolo-trilho figure:not(:first-child){display:none}
+  .rolo-trilho figure{aspect-ratio:4/3}
+  .abre-pe{position:static;max-width:none;margin-top:20px}
+  .leg-quadro{display:none}
+  .fam-foto{height:60svh}.fam-palco h2{font-size:9vw;padding-top:40px}
+  .fam-trilho{grid-template-columns:1fr}
+  .cartao b{font-size:20px}
+  .col-topo{grid-template-columns:1fr}.abas{justify-content:flex-start}
+  .grade{grid-template-columns:repeat(2,minmax(0,1fr))}.item p{flex-direction:column;gap:0}
+  .mat{display:block}.mat h2{position:static;margin-bottom:48px;font-size:12vw}
+  .mat-linhas{gap:72px}.mat-bloco .r{grid-template-columns:1fr}.mat-bloco img{width:100%;aspect-ratio:4/3}
+  .cortina-intro{display:block}.cortina-intro p{margin-top:16px}
+  .lamina{height:auto;position:relative;display:block;padding:24px var(--m)}.lamina img{height:auto;aspect-ratio:4/5}.lamina figcaption{margin-top:16px;font-size:16px}.lamina figcaption b{font-size:9vw;margin-bottom:8px}
+  .arq{display:block}.arq .pess{width:72%;margin:0 0 48px!important}.arq .pess:nth-of-type(2){margin-left:auto!important}
+  .arq h2{margin-bottom:32px}
+  .faixa{height:22vh}.faixa-t span{font-size:15vw}
+  .nomes>div:last-child{display:block}.nomes p{margin-top:8px}
+  .cta a{height:46svh}.cta h2{font-size:26vw}.cta .q{max-width:none;right:72px}
+  .rodape{grid-template-columns:1fr;padding-top:20vh;gap:8px}.rodape p:last-child{text-align:left}.rodape nav{flex-wrap:wrap;gap:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .faixa-t{animation:none}
+  *{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="topo">
+  <a class="marca" href="./" aria-label="Suunto Móveis, início"><img src="../comum/logo.svg" alt="Suunto" width="122" height="24"></a>
+  <nav aria-label="Principal"><a href="#colecao">Coleção</a><a href="#projetos">Projetos</a><a href="#materiais">Materiais</a><button type="button" class="btn-c" data-abrir-carrinho>Carrinho <span data-carrinho-n hidden>0</span></button></nav>
+</header>
+
+<main>
+<div class="abre" id="abre">
+  <div class="palco">
+    <h1><span>Móveis para</span><span>área externa</span></h1>
+    <div class="rolo" aria-hidden="true">
+      <div class="rolo-trilho">
+        <figure><img src="../img/capa-sollos.jpg" alt="" width="1800" height="643"></figure>
+        <figure><img src="../img/capa-grecia.jpg" alt="" width="1800" height="643"></figure>
+        <figure><img src="../img/mesa-mar.jpg" alt="" width="1000" height="1000"></figure>
+        <figure><img src="../img/capa-mesa.jpg" alt="" width="1800" height="643"></figure>
+        <figure><img src="../img/praga-amb.jpg" alt="" width="1000" height="1000"></figure>
+      </div>
+    </div>
+    <div class="abre-pe">
+      <p>Feitos sob encomenda em madeira e corda náutica, com garantia de 3 anos.</p>
+      <a class="btn" href="#colecao">Ver a coleção</a>
+    </div>
+    <p class="leg-quadro" aria-live="polite">Cadeira Sollos na varanda</p>
+  </div>
+</div>
+
+<div class="fam" id="familias">
+  <div class="fam-palco">
+    <div class="fam-foto"><img src="../img/capa-grecia.jpg" alt="Poltronas Grécia no gramado com a serra ao fundo" width="1800" height="643"></div>
+    <h2 class="rv">Peças para viver lá fora</h2>
+    <div class="fam-trilho"></div>
+  </div>
+</div>
+
+<section class="colecao" id="colecao" aria-labelledby="t-col">
+  <div class="col-topo">
+    <div><h2 class="sec-t rv" id="t-col">A coleção</h2><p class="rv">Passe o mouse para ver cada peça no ambiente. Clique para escolher acabamento e quantidade.</p></div>
+    <div class="abas" role="group" aria-label="Filtrar por tipo"></div>
+  </div>
+  <div class="grade"></div>
+  <button class="mais" type="button">Ver mais peças</button>
+</section>
+
+<section class="mat" id="materiais" aria-labelledby="t-mat">
+  <h2 id="t-mat">Feito para ficar lá fora</h2>
+  <div class="mat-linhas">
+    <div class="mat-bloco"><h3>Madeira</h3><div class="r"><img src="../img/coimbra-amb.jpg" alt="Chaise de madeira com almofadas" width="1000" height="1000" loading="lazy"><ul><li>Madeira de alta qualidade</li><li>De fontes sustentáveis e selecionadas</li><li>Tratada e acabada peça por peça</li><li>Durável e resistente</li></ul></div></div>
+    <div class="mat-bloco"><h3>Corda náutica</h3><div class="r"><img src="../img/franca-amb.jpg" alt="Cadeira com assento trançado no jardim" width="1000" height="1000" loading="lazy"><ul><li>Fibra sintética de alta performance</li><li>Resiste a sol, chuva e umidade</li><li>Textura agradável ao toque</li><li>Visual moderno</li></ul></div></div>
+    <div class="mat-bloco"><h3>Conforto</h3><div class="r"><img src="../img/capa-asa-m.jpg" alt="Poltrona estofada com almofadas" width="1500" height="2000" loading="lazy"><ul><li>Espumas de alta densidade</li><li>Mantêm a forma e a maciez</li><li>Capas em tecido premium</li><li>Fáceis de limpar</li></ul></div></div>
+    <div class="mat-bloco"><h3>Garantia</h3><div class="r"><img src="../img/entregue.jpg" alt="Balanço azul instalado no jardim" width="1800" height="1080" loading="lazy"><ul><li>3 anos em toda a coleção</li><li>Peças sob encomenda</li><li>Cores e acabamentos à sua escolha</li><li>Bloco 3D para o seu arquiteto</li></ul></div></div>
+  </div>
+</section>
+
+<section class="cortina" id="projetos" aria-labelledby="t-proj">
+  <div class="cortina-intro"><h2 class="sec-t rv" id="t-proj">Projetos de clientes</h2><p class="rv">Três casas, três pedidos diferentes. Em cada uma, indicamos as peças que completam o espaço.</p></div>
+  <div class="cortina-trilho">
+    <figure class="lamina"><img src="../img/projeto-ba.jpg" alt="Mesa de madeira maciça com cadeiras de base preta e assento tramado" width="1500" height="1800" loading="lazy"><figcaption><b>Bahia</b>A mesa de madeira maciça é o centro. Cadeiras de linhas simples, base em metal preto e assento tramado, para destacar a mesa sem roubar a cena.</figcaption></figure>
+    <figure class="lamina"><img src="../img/projeto-mg.jpg" alt="Varanda com vista para o lago e mesa posta" width="1500" height="1800" loading="lazy"><figcaption><b>Minas Gerais</b>Vista para o lago e refeições em família. Madeira natural e encosto tramado em sintonia com o teto de madeira.</figcaption></figure>
+    <figure class="lamina"><img src="../img/projeto-sp.jpg" alt="Área gourmet com banquetas e cadeiras de madeira" width="1500" height="1800" loading="lazy"><figcaption><b>São Paulo</b>Área gourmet para receber. Banquetas no balcão e cadeiras na mesa, em madeira e encosto tramado.</figcaption></figure>
+  </div>
+</section>
+
+<section class="arq" aria-labelledby="t-arq">
+  <h2 class="sec-t" id="t-arq">Arquitetas parceiras</h2>
+  <div class="pess"><img src="../img/arq-diana.jpg" alt="Diana Cury" width="1800" height="864" loading="lazy" style="object-position:20% 30%"><p><b>Diana Cury</b>Seleção de móveis e decoração indicada por ela.</p></div>
+  <div class="pess"><img src="../img/arq-karol.jpg" alt="Karol Texeira" width="1800" height="1800" loading="lazy"><p><b>Karol Texeira</b>Seleção de móveis e decoração indicada por ela.</p></div>
+  <div class="pess"><img src="../img/arq-leticia.jpg" alt="Leticia Carvalho" width="1800" height="864" loading="lazy" style="object-position:30% 30%"><p><b>Leticia Carvalho</b>Seleção de móveis e decoração indicada por ela.</p></div>
+</section>
+
+<section class="nomes" aria-labelledby="t-nomes">
+  <div class="faixa" aria-hidden="true"><div class="faixa-t"><span>Bahia</span><span>Minas Gerais</span><span>São Paulo</span><span>Diana Cury</span><span>Karol Texeira</span><span>Leticia Carvalho</span><span>Bahia</span><span>Minas Gerais</span><span>São Paulo</span><span>Diana Cury</span><span>Karol Texeira</span><span>Leticia Carvalho</span></div></div>
+  <div><h2 id="t-nomes">Onde a Suunto já está</h2><p>Projetos entregues na Bahia, em Minas Gerais e em São Paulo, e três arquitetas que indicam a coleção nos projetos delas.</p></div>
+</section>
+
+<section class="cta" aria-labelledby="t-cta">
+  <a href="https://wa.me/5537998057484?text=Ol%C3%A1!%20Quero%20encomendar%20m%C3%B3veis%20para%20minha%20%C3%A1rea%20externa." target="_blank" rel="noopener">
+    <p class="q">Mande a foto do seu espaço. Indicamos as peças, as cores e o prazo de cada uma.</p>
+    <span class="s" aria-hidden="true">↗</span>
+    <h2 id="t-cta">Encomende</h2>
+  </a>
+</section>
+</main>
+
+<footer class="rodape">
+  <p>Suunto Móveis · área externa</p>
+  <nav aria-label="Rodapé"><a href="#colecao">Coleção</a><a href="#projetos">Projetos</a><a href="https://wa.me/5537998057484" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/suunto.casa" target="_blank" rel="noopener">Instagram</a></nav>
+  <p>© 2026 · Prévia de layout</p>
+</footer>
+
+<script src="../comum/catalogo.js"></script>
+<script src="../comum/loja.js"></script>
+<script>
+(function(){
+  var L=window.Loja, reduz=matchMedia('(prefers-reduced-motion: reduce)').matches, celular=function(){return innerWidth<=900};
+  /* famílias */
+  var fams=['cadeira-sollos','poltrona-grecia','balanco-voar','espreguicadeira-angra','banqueta-adelita','mesa-sollos'].map(function(i){return L.porId[i]}).filter(Boolean);
+  document.querySelector('.fam-trilho').innerHTML=fams.map(function(p){return '<a class="cartao" href="#" data-produto="'+p.id+'"><div class="f"><img src="'+L.img(p.img[0],900)+'" alt="'+L.esc(p.nome)+'" width="900" height="560" loading="lazy"></div><div class="p"><b>'+L.esc(p.nome)+'</b><span>'+L.precoTexto(p)+'</span></div></a>'}).join('');
+
+  /* rolos presos à rolagem */
+  var abre=document.getElementById('abre'),trilho=document.querySelector('.rolo-trilho'),leg=document.querySelector('.leg-quadro');
+  var legs=['Cadeira Sollos na varanda','Poltronas Grécia no gramado','Mesa redonda de frente para o mar','Mesa de centro e sofá','Balanço Praga no jardim'];
+  var fam=document.getElementById('familias'),ffoto=document.querySelector('.fam-foto img');
+  function prog(el){var r=el.getBoundingClientRect();var t=el.offsetHeight-innerHeight;return Math.min(1,Math.max(0,-r.top/t))}
+  function quadro(){var f=trilho.querySelector('figure');return f.offsetHeight+24}
+  function tick(){
+    if(celular()){return}
+    var q=quadro(),n=trilho.children.length,p=prog(abre),pos=p*(n-1);
+    trilho.style.transform='translateY('+(-q/2-pos*q)+'px)';
+    var i=Math.round(pos);if(leg.textContent!==legs[i])leg.textContent=legs[i];
+    var r=fam.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0){ffoto.style.transform='translateY('+(-(1-(r.top+r.height)/(innerHeight+r.height))*15)+'%)'}
+  }
+  if(!reduz){addEventListener('scroll',function(){requestAnimationFrame(tick)},{passive:true});addEventListener('resize',tick)}
+  tick();
+
+  /* coleção */
+  var ordem=['Todas','Cadeiras','Poltronas','Sofás','Balanços','Espreguiçadeiras','Chaises','Banquetas','Mesas','Mesas de centro','Mesas laterais','Puffs'];
+  var abas=document.querySelector('.abas'),grade=document.querySelector('.grade'),mais=document.querySelector('.mais'),cat='Todas',lim=12;
+  ordem.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.textContent=c;b.setAttribute('aria-pressed',i===0);b.onclick=function(){cat=c;lim=12;abas.querySelectorAll('button').forEach(function(o){o.setAttribute('aria-pressed',o===b)});desenhar()};abas.appendChild(b)});
+  function desenhar(){
+    var ps=L.lista.filter(function(p){return cat==='Todas'||p.cat===cat}).sort(function(a,b){return (b.img.length>1)-(a.img.length>1)||(b.preco?1:0)-(a.preco?1:0)});
+    grade.innerHTML=ps.slice(0,lim).map(function(p){return '<a class="item rv in" href="#" data-produto="'+p.id+'"><div class="f"><img src="'+L.img(p.img[0],600)+'" alt="'+L.esc(p.nome)+'" width="600" height="600" loading="lazy">'+(p.img[1]?'<img class="amb" src="'+L.img(p.img[1],600)+'" alt="" width="600" height="600" loading="lazy">':'')+'</div><p><span>'+L.esc(p.nome)+'</span><span>'+(p.preco?L.brl(p.preco):'Sob consulta')+'</span></p></a>'}).join('');
+    mais.hidden=ps.length<=lim;
+  }
+  mais.onclick=function(){lim+=12;desenhar()};
+  desenhar();
+
+  /* entradas */
+  document.querySelectorAll('.cartao').forEach(function(e){e.classList.add('rv')});
+  function revelar(){var h=innerHeight*0.94;document.querySelectorAll('.rv:not(.in)').forEach(function(e){var r=e.getBoundingClientRect();if(r.top<h&&r.bottom>0){var i=Array.prototype.indexOf.call(e.parentNode.children,e);e.style.transitionDelay=Math.min(i,4)*75+'ms';e.classList.add('in')}})}
+  if(!reduz){addEventListener('scroll',function(){requestAnimationFrame(revelar)},{passive:true});addEventListener('resize',revelar);revelar();setTimeout(revelar,400)}
+  else document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});
+})();
+</script>
+</body>
+</html>

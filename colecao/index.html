@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Suunto Móveis · Coleção</title>
+<meta name="description" content="Prévia do site da Suunto Móveis: a coleção inteira de móveis de área externa, sob encomenda.">
+<link rel="icon" href="../comum/simbolo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../comum/loja.css">
+<style>
+:root{
+  --bg:#1E241D; --ink:#EEF0EA; --muted:#B4BCAE; --accent:#DCE2D6; --accent-ink:#1E241D; --surface:#2A3228;
+  --brand:#425143; --sage:#708A5C; --paper:#F3F3F3;
+  --font:'Poppins',system-ui,sans-serif; --radius:0px; --m:clamp(16px,2vw,28px); --g:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:clip;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.lj-ficha,.lj-gaveta{--bg:#F7F7F5;--ink:#272727;--muted:#5B605B;--accent:#425143;--accent-ink:#fff;--surface:#ECECEA}
+.grid7{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:var(--g);padding-inline:var(--m)}
+/* faixa de texto */
+.faixa{padding-top:20px;align-items:start}
+.faixa .marca img{height:22px;width:auto}
+.faixa p,.faixa ul{margin:0;padding:0;list-style:none;font-size:16px}
+.faixa a{text-decoration:none}.faixa a:hover{text-decoration:underline;text-underline-offset:4px}
+.faixa .c3{grid-column:3/5}.faixa .c5{grid-column:5/7}
+.faixa .acoes{grid-column:7;display:grid;gap:6px;justify-items:end;text-align:right}
+.btn-c{font:inherit;font-size:16px;background:var(--accent);color:var(--accent-ink);border:0;padding:10px 16px;cursor:pointer;display:inline-flex;gap:10px;align-items:center;transition:filter .2s}
+.btn-c:hover{filter:brightness(1.08)}
+.btn-c [data-carrinho-n]{background:var(--accent-ink);color:var(--accent);min-width:22px;height:22px;display:inline-grid;place-items:center;font-size:14px}
+.abertura{padding:72px var(--m) 0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:var(--g);align-items:end}
+.abertura h1{grid-column:1/6;margin:0;font-size:clamp(44px,6.4vw,104px);line-height:.98;letter-spacing:-.045em;font-weight:600}
+.abertura .conta{grid-column:6/8;font-size:16px;color:var(--muted);text-align:right;letter-spacing:0;font-weight:400;line-height:1.5}
+/* folha */
+.folha{padding:40px var(--m) 0;display:grid;gap:40px}
+.corrida-cat h2{margin:0 0 10px;font-size:16px;font-weight:500;display:flex;gap:12px}
+.corrida-cat h2 span{color:var(--muted);font-weight:400}
+.quadros{display:flex;flex-wrap:wrap;gap:6px}
+.quadros a{display:block;background:var(--paper);width:118px;height:118px;transition:transform .25s,outline-color .25s;outline:2px solid transparent}
+.quadros a:hover,.quadros a:focus-visible{transform:scale(1.06);outline-color:var(--accent)}
+.quadros img{width:100%;height:100%;object-fit:contain}
+/* índice */
+section{padding-block:clamp(110px,12vw,190px)}
+.sec-t{margin:0;font-size:clamp(30px,3.4vw,48px);line-height:1.04;letter-spacing:-.03em;font-weight:600}
+.indice{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:var(--g);padding-inline:var(--m)}
+.indice-esq{grid-column:1/4}
+.indice-esq p{margin:14px 0 28px;color:var(--muted)}
+.abas{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.abas button{font:inherit;font-size:14px;background:var(--surface);color:var(--ink);border:0;padding:8px 12px;cursor:pointer}
+.abas button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.linhas{list-style:none;margin:0;padding:0}
+.linhas a{display:grid;grid-template-columns:1fr auto;gap:16px;padding:10px 0;text-decoration:none;font-size:20px;color:var(--muted);transition:color .2s,padding .25s}
+.linhas a:hover,.linhas a:focus-visible,.linhas a.on{color:var(--ink);padding-left:10px}
+.linhas a span:last-child{font-size:16px}
+.linhas .mini{display:none}
+.previa{grid-column:4/8;position:sticky;top:24px;align-self:start;background:var(--paper);aspect-ratio:1/1;overflow:hidden}
+.previa img{position:absolute;inset:6%;width:88%;height:88%;object-fit:contain;transition:opacity .24s}
+.previa .amb{inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.previa:hover .amb.tem{opacity:1}
+.previa figcaption{position:absolute;left:0;bottom:0;background:var(--bg);color:var(--ink);padding:10px 14px;font-size:16px}
+/* projetos: corrida com um alto */
+.proj{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--g);padding-inline:var(--m)}
+.proj-txt{grid-column:1/4;display:flex;flex-direction:column;gap:28px}
+.proj-txt p{margin:0;color:var(--muted)}
+.proj-txt strong{color:var(--ink);font-weight:500;display:block}
+.proj-corrida{grid-column:4/13;display:flex;gap:6px;align-items:flex-end}
+.proj-corrida figure{margin:0;flex:1 1 0;min-width:0}
+.proj-corrida img{width:100%;height:32vh;object-fit:cover}
+.proj-corrida figure.alto{flex:1.6 1 0}
+.proj-corrida figure.alto img{height:70vh}
+.proj-corrida figcaption{font-size:14px;margin-top:8px;color:var(--muted)}
+/* sobre */
+.sobre{padding-inline:var(--m)}
+.sobre-t{margin:0 0 28px;font-size:clamp(30px,3.4vw,48px);letter-spacing:-.03em;font-weight:600}
+.sobre p.grande{margin:0;margin-left:28%;font-size:clamp(22px,2.3vw,32px);line-height:1.25;letter-spacing:-.01em}
+.sobre p.grande img{float:left;width:3.75em;height:3.75em;object-fit:cover;margin:.2em .5em 0 0}
+.sobre p.corpo{margin:20px 0 0 28%;max-width:56ch;color:var(--muted)}
+.fatos{margin:48px 0 0 28%;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--g)}
+.fatos div{background:var(--surface);padding:22px}
+.fatos b{display:block;font-size:30px;font-weight:600;letter-spacing:-.02em}
+.fatos span{color:var(--muted)}
+/* nomes */
+.nomes{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--g);padding-inline:var(--m)}
+.nomes h2{grid-column:1/4}
+.nomes .cols{grid-column:5/13;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;font-size:20px;line-height:1.6}
+.nomes .cols p{margin:0}
+.nomes .cols .k{color:var(--muted)}
+/* como comprar */
+.passos-topo{display:flex;justify-content:space-between;align-items:end;padding-inline:var(--m);gap:24px}
+.setas{display:none}
+.setas button{width:48px;height:48px;border:0;background:var(--accent);color:var(--accent-ink);font:inherit;font-size:20px;cursor:pointer}
+.setas button:hover{filter:brightness(1.08)}
+.barra{display:none;margin:20px var(--m) 0;height:6px;background:var(--surface);position:relative}
+.barra i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);width:0}
+.passos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--g);padding:28px var(--m) 8px}
+
+.passo{display:flex;flex-direction:column;gap:12px}
+.passo:nth-child(odd){padding-top:56px}
+.passo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.passo h3{margin:0;font-size:20px;font-weight:500}
+.passo p{margin:0;color:var(--muted)}
+/* fechamento */
+.fecho{padding:0}
+.tira{display:grid;grid-template-columns:repeat(3,1fr)}
+.tira img{width:100%;height:42svh;object-fit:cover}
+.campo{background:var(--brand);padding:64px var(--m) 72px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--g);position:relative}
+.campo h2{grid-column:1/8;margin:0;font-size:clamp(30px,3.4vw,48px);letter-spacing:-.03em;font-weight:600}
+.campo p{grid-column:1/8;margin:16px 0 0;font-size:20px;line-height:1.4}
+.campo p a{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
+.campo p a:hover{text-decoration-color:var(--accent)}
+.campo .pq{grid-column:11/13;grid-row:1/3;align-self:end;margin:0}
+.campo .pq img{width:100%;aspect-ratio:4/5;object-fit:cover}
+/* rodapé em ladrilhos */
+.rodape{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:8px;padding:8px}
+.rodape>div{background:var(--surface);padding:22px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.rodape .a{grid-column:1/5}.rodape .b{grid-column:5/8}.rodape .c{grid-column:8/10}.rodape .d{grid-column:10/13}
+.rodape .e{grid-column:1/10;min-height:300px;background:var(--brand)}.rodape .f{grid-column:10/13;min-height:300px;background:var(--accent);color:var(--accent-ink)}
+.rodape p{margin:0}.rodape .a p:first-child{font-size:20px}
+.rodape small{font-size:14px;color:var(--muted)}
+.rodape ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.rodape a{text-decoration:none}.rodape a:hover{text-decoration:underline}
+.rodape .e img{width:100%;height:auto;margin-top:auto}
+.rodape .f a{font-size:20px}
+/* entrada */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (max-width:900px){
+  .grid7{grid-template-columns:1fr 1fr;gap:12px}
+  .faixa .marca,.faixa>p{grid-column:1/3}.faixa .c3{display:none}.faixa .c5{display:none}
+  .faixa .acoes{position:fixed;right:12px;bottom:12px;z-index:20}.faixa .acoes a{display:none}
+  .abertura{display:block;padding-top:48px}.abertura .conta{text-align:left;margin-top:12px}
+  .quadros{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:4px}.quadros a{width:auto;height:auto;aspect-ratio:1}
+  .indice{display:block}.previa{display:none}
+  .linhas a{grid-template-columns:72px 1fr;align-items:center;font-size:18px;color:var(--ink)}
+  .linhas .mini{display:block;width:72px;height:72px;background:var(--paper);object-fit:contain}
+  .linhas a span:last-child{grid-column:2;font-size:14px;color:var(--muted);margin-top:-14px}
+  .proj{display:block}.proj-txt{margin-bottom:24px}.proj-corrida{flex-direction:column}.proj-corrida img,.proj-corrida figure.alto img{height:auto;aspect-ratio:4/3}
+  .sobre p.grande,.sobre p.corpo{margin-left:0}.sobre p.grande{font-size:20px}.fatos{margin-left:0;grid-template-columns:1fr}
+  .nomes{display:block}.nomes .cols{grid-template-columns:1fr 1fr;margin-top:24px;font-size:16px}
+  .passos{grid-template-columns:1fr 1fr;row-gap:32px}.passo:nth-child(odd){padding-top:0}.passo:nth-child(even){padding-top:40px}
+  .tira{grid-template-columns:1fr 1fr}.tira img:first-child{grid-column:1/3}.tira img{height:auto;aspect-ratio:4/3}
+  .campo{display:block}.campo .pq{width:96px;margin-top:24px}
+  .rodape{grid-template-columns:1fr 1fr}.rodape>div{grid-column:span 1!important;min-height:160px}.rodape .e,.rodape .f,.rodape .a{grid-column:1/3!important}
+}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="grid7 faixa">
+  <div class="marca"><img src="../comum/logo-branca.svg" alt="Suunto Móveis" width="112" height="22"></div>
+  <p>Móveis de área externa feitos sob encomenda, com garantia de 3 anos.</p>
+  <ul class="c3"><li><a href="#folha">Coleção completa</a></li><li><a href="#indice">Escolher por tipo</a></li><li><a href="#projetos">Projetos de clientes</a></li><li><a href="#como-comprar">Como comprar</a></li></ul>
+  <ul class="c5"><li>Arquitetas parceiras:</li><li>Diana Cury</li><li>Karol Texeira</li><li>Leticia Carvalho</li></ul>
+  <div class="acoes"><button type="button" class="btn-c" data-abrir-carrinho>Carrinho <span data-carrinho-n hidden>0</span></button><a href="https://wa.me/5537998057484" target="_blank" rel="noopener">WhatsApp</a></div>
+</header>
+
+<main>
+<div class="abertura">
+  <h1 class="rv">Coleção de área externa</h1>
+  <p class="conta rv" id="conta"></p>
+</div>
+<div class="folha" id="folha"></div>
+
+<section id="indice" aria-labelledby="t-ind">
+  <div class="indice">
+    <div class="indice-esq">
+      <h2 class="sec-t rv" id="t-ind">Escolha pelo tipo</h2>
+      <p class="rv">Passe o mouse pelos nomes para ver a peça. Clique para abrir a ficha.</p>
+      <div class="abas" role="group" aria-label="Tipo de peça"></div>
+      <ul class="linhas"></ul>
+    </div>
+    <figure class="previa" aria-hidden="true"><img class="prod" src="https://cdn.shopify.com/s/files/1/0572/8108/5476/files/CadeiraSollos.jpg?width=1000" alt="" width="1000" height="1000"><img class="amb" src="https://cdn.shopify.com/s/files/1/0572/8108/5476/files/CadeiraSollos.jpg?width=1200" alt="" width="1000" height="1000"><figcaption></figcaption></figure>
+  </div>
+</section>
+
+<section id="projetos" aria-labelledby="t-proj">
+  <div class="proj">
+    <div class="proj-txt">
+      <h2 class="sec-t rv" id="t-proj">Projetos de clientes</h2>
+      <p class="rv"><strong>Bahia</strong>Uma mesa de madeira maciça como centro. Cadeiras de linhas simples, base em metal preto e assento tramado.</p>
+      <p class="rv"><strong>Minas Gerais</strong>Vista para o lago. Madeira natural e encosto tramado para as refeições em família.</p>
+      <p class="rv"><strong>São Paulo</strong>Área gourmet com banquetas no balcão e cadeiras na mesa, em madeira e encosto tramado.</p>
+    </div>
+    <div class="proj-corrida">
+      <figure class="rv"><img src="../img/projeto-mg.jpg" alt="Varanda com vista para o lago e mesa posta" width="1500" height="1800" loading="lazy"><figcaption>Minas Gerais</figcaption></figure>
+      <figure class="alto rv"><img src="../img/projeto-ba.jpg" alt="Mesa de madeira maciça com cadeiras de base preta" width="1500" height="1800" loading="lazy"><figcaption>Bahia</figcaption></figure>
+      <figure class="rv"><img src="../img/projeto-sp.jpg" alt="Área gourmet com banquetas e cadeiras de madeira" width="1500" height="1800" loading="lazy"><figcaption>São Paulo</figcaption></figure>
+      <figure class="rv"><img src="../img/mesa-mar.jpg" alt="Mesa redonda com cadeiras de corda azul de frente para o mar" width="1000" height="1000" loading="lazy"><figcaption>Frente para o mar</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sobre" aria-labelledby="t-sobre">
+  <h2 class="sobre-t rv" id="t-sobre">Como trabalhamos</h2>
+  <p class="grande rv"><img src="../img/producao.jpg" alt="Estrutura de balanço na produção" width="1800" height="1080" loading="lazy">A Suunto escolhe cada móvel com fábricas parceiras e acompanha a peça da produção até a sua casa. Você define as cores e os acabamentos.</p>
+  <p class="corpo rv">As arquitetas parceiras ajudam a compor o ambiente, e cada peça sai com garantia de 3 anos e o bloco 3D para o projeto.</p>
+  <div class="fatos">
+    <div class="rv"><b>Sob encomenda</b><span>Cada peça é feita para o seu pedido.</span></div>
+    <div class="rv"><b>3 anos</b><span>de garantia em toda a coleção.</span></div>
+    <div class="rv"><b>Bloco 3D</b><span>para o seu arquiteto incluir no projeto.</span></div>
+  </div>
+</section>
+
+<section aria-labelledby="t-nomes">
+  <div class="nomes">
+    <h2 class="sec-t rv" id="t-nomes">Quem está com a gente</h2>
+    <div class="cols">
+      <div class="rv"><p class="k">Arquitetas parceiras</p><p>Diana Cury</p><p>Karol Texeira</p><p>Leticia Carvalho</p></div>
+      <div class="rv"><p class="k">Projetos entregues</p><p>Bahia</p><p>Minas Gerais</p><p>São Paulo</p></div>
+      <div class="rv"><p class="k">Materiais</p><p>Madeira</p><p>Corda náutica</p><p>Tela sling</p><p>Alumínio</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="como-comprar" aria-labelledby="t-como">
+  <div class="passos-topo"><h2 class="sec-t rv" id="t-como">Como comprar</h2><div class="setas"><button type="button" data-d="-1" aria-label="Voltar">←</button><button type="button" data-d="1" aria-label="Avançar">→</button></div></div>
+  <div class="barra" aria-hidden="true"><i></i></div>
+  <div class="passos">
+    <article class="passo"><img src="../img/capa-sollos-m.jpg" alt="Jogo Sollos na varanda" width="1500" height="2000" loading="lazy"><h3>Escolha a peça</h3><p>Navegue pela coleção e coloque no carrinho o que combina com o seu espaço.</p></article>
+    <article class="passo"><img src="../img/franca-amb.jpg" alt="Detalhe de cadeira com tela" width="1000" height="1000" loading="lazy"><h3>Personalize</h3><p>Cores da corda, tecidos e acabamentos da madeira, do jeito que você imaginou.</p></article>
+    <article class="passo"><img src="../img/arq-karol.jpg" alt="Arquiteta parceira" width="1800" height="1800" loading="lazy"><h3>Fale com a equipe</h3><p>Fechamos o pedido pelo WhatsApp, com medidas, prazo de fabricação e frete.</p></article>
+    <article class="passo"><img src="../img/producao.jpg" alt="Balanço sendo produzido" width="1800" height="1080" loading="lazy"><h3>Produção</h3><p>A fábrica parceira produz a sua peça sob encomenda.</p></article>
+    <article class="passo"><img src="../img/entregue.jpg" alt="Balanço azul entregue no jardim" width="1800" height="1080" loading="lazy"><h3>Na sua casa</h3><p>A peça chega na sua casa, com 3 anos de garantia.</p></article>
+    <article class="passo"><img src="../img/capa-grecia-m.jpg" alt="Poltrona Grécia no gramado" width="1500" height="2000" loading="lazy"><h3>Monte o resto</h3><p>Volte quando quiser completar o ambiente, com a mesma linha e o mesmo acabamento.</p></article>
+  </div>
+</section>
+
+<section class="fecho" aria-labelledby="t-fecho">
+  <div class="tira"><img src="../img/coimbra-amb.jpg" alt="Chaise Coimbra com almofadas" width="1000" height="1000" loading="lazy"><img src="../img/praga-amb.jpg" alt="Balanço Praga no gramado" width="1000" height="1000" loading="lazy"><img src="../img/sollos-amb-2.jpg" alt="Mesa redonda com cadeiras Sollos" width="1000" height="1000" loading="lazy"></div>
+  <div class="campo">
+    <h2 id="t-fecho">Monte a sua área externa</h2>
+    <p>Mande a foto do seu espaço e <a href="https://wa.me/5537998057484?text=Ol%C3%A1!%20Quero%20montar%20minha%20%C3%A1rea%20externa." target="_blank" rel="noopener">fale com a nossa equipe</a>. Indicamos as peças, as cores e o prazo de cada uma.</p>
+    <figure class="pq"><img src="../img/banqueta-sollos-amb.jpg" alt="Banqueta Sollos no balcão" width="1000" height="1000" loading="lazy"></figure>
+  </div>
+</section>
+</main>
+
+<footer class="rodape">
+  <div class="a"><p>Móveis de área externa feitos sob encomenda, com garantia de 3 anos.</p><small>© 2026 Suunto Móveis. Prévia de layout, ainda não é a loja no ar.</small></div>
+  <div class="b"><ul><li><a href="#folha">Coleção completa</a></li><li><a href="#indice">Escolher por tipo</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#como-comprar">Como comprar</a></li></ul></div>
+  <div class="c"><p>Atendimento</p><p><a href="https://wa.me/5537998057484" target="_blank" rel="noopener">(37) 99805-7484</a></p></div>
+  <div class="d"><p>Instagram</p><p><a href="https://www.instagram.com/suunto.casa" target="_blank" rel="noopener">@suunto.casa</a></p></div>
+  <div class="e"><img src="../comum/logo-branca.svg" alt="Suunto" width="1600" height="315" loading="lazy"></div>
+  <div class="f"><p>Seu carrinho</p><a href="#" data-abrir-carrinho>Abrir carrinho</a></div>
+</footer>
+
+<script src="../comum/catalogo.js"></script>
+<script src="../comum/loja.js"></script>
+<script>
+(function(){
+  var L=window.Loja, reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ordem=['Cadeiras','Poltronas','Sofás','Balanços','Espreguiçadeiras','Chaises','Banquetas','Mesas','Mesas de centro','Mesas laterais','Puffs'];
+  var grupos={};L.lista.forEach(function(p){(grupos[p.cat]=grupos[p.cat]||[]).push(p)});
+  ordem=ordem.filter(function(c){return grupos[c]});
+  document.getElementById('conta').textContent=L.lista.length+' peças em '+ordem.length+' tipos. Clique em qualquer uma para abrir.';
+  document.getElementById('folha').innerHTML=ordem.map(function(c){
+    return '<div class="corrida-cat"><h2>'+c+' <span>'+grupos[c].length+'</span></h2><div class="quadros">'+grupos[c].map(function(p){
+      return '<a href="#" data-produto="'+p.id+'" aria-label="'+L.esc(p.nome)+'"><img src="'+L.img(p.img[0],260)+'" alt="" width="118" height="118" loading="lazy"></a>';
+    }).join('')+'</div></div>';
+  }).join('');
+
+  /* índice com prévia */
+  var abas=document.querySelector('.abas'),linhas=document.querySelector('.linhas'),prev=document.querySelector('.previa'),pi=prev.querySelector('.prod'),pa=prev.querySelector('.amb'),pc=prev.querySelector('figcaption');
+  function previa(p){pi.src=L.img(p.img[0],1000);pc.textContent=p.nome+' · '+L.precoTexto(p);if(p.img[1]){pa.src=L.img(p.img[1],1200);pa.classList.add('tem')}else pa.classList.remove('tem')}
+  function lista(c){
+    linhas.innerHTML=grupos[c].map(function(p){return '<li><a href="#" data-produto="'+p.id+'"><img class="mini" src="'+L.img(p.img[0],160)+'" alt="" width="72" height="72" loading="lazy"><span>'+L.esc(p.nome)+'</span><span>'+(p.preco?L.brl(p.preco):'Sob consulta')+'</span></a></li>'}).join('');
+    linhas.querySelectorAll('a').forEach(function(a,i){var f=function(){linhas.querySelectorAll('a').forEach(function(o){o.classList.remove('on')});a.classList.add('on');previa(grupos[c][i])};a.addEventListener('mouseenter',f);a.addEventListener('focus',f)});
+    linhas.querySelector('a').classList.add('on');previa(grupos[c][0]);
+  }
+  ordem.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.textContent=c;b.setAttribute('aria-pressed',i===0);b.onclick=function(){abas.querySelectorAll('button').forEach(function(o){o.setAttribute('aria-pressed',o===b)});lista(c)};abas.appendChild(b)});
+  lista(ordem[0]);
+
+  /* como comprar */
+  var row=document.querySelector('.passos'),bar=document.querySelector('.barra i');
+  function prog(){var m=row.scrollWidth-row.clientWidth;bar.style.width=(m>0?(row.scrollLeft/m)*100:100)+'%'}
+  row.addEventListener('scroll',prog,{passive:true});prog();
+  document.querySelectorAll('.setas button').forEach(function(b){b.onclick=function(){row.scrollBy({left:Number(b.dataset.d)*332,behavior:reduz?'auto':'smooth'})}});
+
+  /* entradas */
+  document.querySelectorAll('.corrida-cat').forEach(function(el){el.classList.add('rv')});
+  function revelar(){var h=innerHeight*0.94;document.querySelectorAll('.rv:not(.in)').forEach(function(e){var r=e.getBoundingClientRect();if(r.top<h&&r.bottom>0){var i=Array.prototype.indexOf.call(e.parentNode.children,e);e.style.transitionDelay=Math.min(i,4)*75+'ms';e.classList.add('in')}})}
+  if(!reduz){addEventListener('scroll',function(){requestAnimationFrame(revelar)},{passive:true});addEventListener('resize',revelar);revelar();setTimeout(revelar,400)}
+  else document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});
+})();
+</script>
+</body>
+</html>
